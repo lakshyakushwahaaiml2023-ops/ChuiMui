@@ -1,0 +1,531 @@
+/* ==========================================================================
+   CHUI MUI — Signature Collection Editorial Section Styles
+   Strictly adheres to: dark, sensual, editorial aesthetic
+   Zero generic cards. Zero glassmorphism. Refined typography & hairlines.
+   ========================================================================== */
+
+.signature-collection-section {
+  position: relative;
+  background-color: var(--color-black);
+  padding: clamp(6rem, 14vh, 11rem) clamp(1.8rem, 6vw, 6rem);
+  overflow: hidden;
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 1px solid var(--border-gold-subtle);
+  border-bottom: 1px solid var(--border-gold-subtle);
+}
+
+/* Atmospheric Tint Background Layer */
+.signature-collection-bg-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.signature-collection-bg-tint.is-active {
+  opacity: 1;
+}
+
+/* Ambient Radial Accent Aura */
+.signature-collection-ambient-aura {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.signature-collection-ambient-aura.is-active {
+  opacity: 0.16;
+}
+
+/* Subtle top & bottom edge gradients for seamless bleed */
+.signature-collection-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(11, 9, 7, 0.8) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.signature-collection-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(0deg, rgba(11, 9, 7, 0.8) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.signature-collection-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION HEADER & "VIEW ALL" TEXT LINK
+   -------------------------------------------------------------------------- */
+.signature-collection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: clamp(2.5rem, 5vh, 4rem);
+  border-bottom: 1px solid var(--border-gold-subtle);
+  margin-bottom: 0;
+  gap: 2rem;
+}
+
+.signature-header-copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.signature-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.signature-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--color-cream);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.signature-title .title-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold);
+}
+
+/* "View all" text link going to /products */
+.signature-view-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  text-decoration: none;
+  position: relative;
+  padding: 0.6rem 0;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.signature-view-all-link .view-all-text {
+  position: relative;
+}
+
+.signature-view-all-link .view-all-text::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0.45);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+.signature-view-all-link .view-all-arrow {
+  font-size: 0.9rem;
+  color: var(--color-gold);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+
+.signature-view-all-link:hover {
+  color: var(--color-gold);
+}
+
+.signature-view-all-link:hover .view-all-text::after {
+  transform: scaleX(1);
+  background-color: var(--color-gold);
+}
+
+.signature-view-all-link:hover .view-all-arrow {
+  transform: translateX(4px);
+}
+
+.signature-view-all-link:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   EDITORIAL ROWS (Not a Card Grid)
+   -------------------------------------------------------------------------- */
+.signature-rows-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.signature-row-item {
+  position: relative;
+  border-bottom: 1px solid var(--border-gold-subtle);
+  transition: border-color 0.4s ease, background-color 0.4s ease;
+}
+
+.signature-row-item:hover,
+.signature-row-item:focus-within {
+  border-bottom-color: var(--border-gold-hairline);
+}
+
+.signature-row {
+  display: grid;
+  grid-template-columns: 1.35fr 1.4fr 170px;
+  gap: clamp(2rem, 4vw, 5rem);
+  align-items: center;
+  padding: clamp(3rem, 5.5vh, 4.5rem) 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  position: relative;
+}
+
+.signature-row:focus-visible {
+  outline: 1px dashed var(--color-gold);
+  outline-offset: -4px;
+}
+
+/* Column 1: Identity (Large Serif Name & Tagline) */
+.signature-col-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.signature-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.signature-row-index {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--color-gold);
+  opacity: 0.85;
+}
+
+.signature-row-volume {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-cream-muted);
+}
+
+.signature-row-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.2vw, 4rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--color-cream);
+  margin: 0;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.signature-row-item:hover .signature-row-name,
+.signature-row-item:focus-within .signature-row-name {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.signature-row-tagline {
+  font-family: var(--font-sans);
+  font-size: clamp(0.88rem, 1.1vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: var(--text-cream-dim);
+  margin: 0;
+  max-width: 520px;
+  transition: color 0.4s ease;
+}
+
+.signature-row-item:hover .signature-row-tagline {
+  color: var(--color-cream);
+}
+
+.signature-row-price-badge {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  color: var(--color-gold);
+  margin-top: 0.25rem;
+  font-weight: 400;
+}
+
+/* Column 2: Olfactory Notes (Typographic Labels) */
+.signature-col-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 0 1rem 0 0;
+}
+
+.signature-notes-heading {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+  margin-bottom: 0.15rem;
+}
+
+.signature-note-tier {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.signature-note-badge {
+  font-family: var(--font-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0.85;
+}
+
+.signature-note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.6rem;
+}
+
+.signature-note-tag {
+  font-family: var(--font-sans);
+  font-size: clamp(0.74rem, 0.85vw, 0.85rem);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: var(--text-cream-dim);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.signature-note-tag:hover {
+  color: var(--color-gold);
+}
+
+.signature-note-dot {
+  color: var(--border-gold-subtle);
+  font-size: 0.7rem;
+  user-select: none;
+}
+
+.signature-row-item:hover .signature-note-tag {
+  color: var(--color-cream);
+}
+
+/* Column 3: Bottle SVG Flacon Placeholder */
+.signature-col-bottle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.signature-bottle-wrapper {
+  width: clamp(100px, 10vw, 140px);
+  height: clamp(150px, 15vw, 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s ease;
+  will-change: transform;
+}
+
+/* Subtle pedestal aura behind bottle */
+.signature-bottle-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.signature-bottle-flacon {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.55));
+  transition: filter 0.6s ease;
+}
+
+.signature-row-item:hover .signature-bottle-wrapper,
+.signature-row-item:focus-within .signature-bottle-wrapper {
+  transform: translateY(-8px) scale(1.04);
+}
+
+.signature-row-item:hover .signature-bottle-flacon {
+  filter: drop-shadow(0 22px 35px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 25px var(--row-accent, rgba(200, 161, 90, 0.3)));
+}
+
+/* --------------------------------------------------------------------------
+   BOTTOM FOOTER CUE
+   -------------------------------------------------------------------------- */
+.signature-collection-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: clamp(2.5rem, 5vh, 3.5rem);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.signature-footer-note {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (Editorial degradation, zero cards)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .signature-row {
+    grid-template-columns: 1.25fr 1.3fr 130px;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .signature-collection-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .signature-row {
+    grid-template-columns: 1fr 120px;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+    padding: 2.5rem 0;
+  }
+
+  .signature-col-identity {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .signature-col-bottle {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-content: flex-end;
+  }
+
+  .signature-col-notes {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(200, 161, 90, 0.12);
+  }
+
+  .signature-bottle-wrapper {
+    width: 110px;
+    height: 155px;
+  }
+}
+
+@media (max-width: 580px) {
+  .signature-collection-section {
+    padding: 4.5rem 1.4rem;
+  }
+
+  .signature-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1.8rem;
+    padding: 2.2rem 0;
+  }
+
+  .signature-col-bottle {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    justify-content: flex-start;
+  }
+
+  .signature-bottle-wrapper {
+    width: 90px;
+    height: 130px;
+  }
+
+  .signature-col-identity {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .signature-col-notes {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+
+  .signature-note-tier {
+    grid-template-columns: 50px 1fr;
+    gap: 0.6rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .signature-collection-section,
+  .signature-collection-bg-tint,
+  .signature-collection-ambient-aura,
+  .signature-row-name,
+  .signature-bottle-wrapper,
+  .signature-view-all-link .view-all-arrow,
+  .signature-view-all-link .view-all-text::after {
+    transition: none !important;
+    transform: none !important;
+  }
+}

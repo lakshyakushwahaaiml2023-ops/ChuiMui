@@ -1,0 +1,473 @@
+/* ==========================================================================
+   CHUI MUI — Editorial Hero & Minimal Header Styles
+   Zero glassmorphism. Zero generic cards. Zero startup gradients.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   MINIMAL TRANSPARENT HEADER
+   -------------------------------------------------------------------------- */
+.minimal-editorial-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1.8rem 3.5rem;
+  background: transparent;
+  pointer-events: none;
+}
+
+.header-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-wordmark {
+  pointer-events: auto;
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  color: var(--color-cream);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease;
+}
+
+.brand-wordmark:hover {
+  opacity: 0.82;
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.brand-subtext {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--color-bronze);
+  text-transform: uppercase;
+}
+
+.header-nav {
+  pointer-events: auto;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-cream-dim);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 768px) {
+  .minimal-editorial-header {
+    padding: 1.1rem 1.4rem;
+  }
+  .brand-title {
+    font-size: 1.12rem;
+    letter-spacing: 0.14em;
+  }
+  .brand-subtext {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+  }
+  .nav-list {
+    gap: 0.95rem;
+  }
+  .nav-link {
+    font-size: 0.64rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-subtext {
+    display: none;
+  }
+  .nav-list {
+    gap: 0.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   HERO SCROLL SECTION & STICKY STAGE (PDF Pages 5-6)
+   -------------------------------------------------------------------------- */
+.hero-scroll-section {
+  position: relative;
+  width: 100%;
+  height: 320svh;
+  background-color: var(--color-black);
+}
+
+@media (max-width: 960px) {
+  .hero-scroll-section {
+    height: 290svh;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-scroll-section {
+    height: 270svh;
+  }
+}
+
+.hero-sticky-stage {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-black);
+}
+
+/* Full-bleed video canvas matching the container */
+.hero-scrub-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background-color: var(--color-black);
+}
+
+/* Subtle dark gradient overlay to guarantee text legibility over mist without glassmorphism */
+.hero-sticky-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 9, 7, 0) 0%,
+    rgba(11, 9, 7, 0.15) 35%,
+    rgba(11, 9, 7, 0.65) 65%,
+    rgba(11, 9, 7, 0.85) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (max-width: 960px) {
+  .hero-sticky-stage::after {
+    background: linear-gradient(
+      180deg,
+      rgba(11, 9, 7, 0.2) 0%,
+      rgba(11, 9, 7, 0.1) 40%,
+      rgba(11, 9, 7, 0.85) 85%,
+      rgba(11, 9, 7, 0.95) 100%
+    );
+  }
+}
+
+/* --------------------------------------------------------------------------
+   EDITORIAL TYPOGRAPHY OVERLAY (Right-Hand Negative Space)
+   -------------------------------------------------------------------------- */
+.hero-editorial-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(6rem, 12vh, 9rem) clamp(1.8rem, 6vw, 6rem);
+}
+
+/* Primary Copy Block (Center-Right) */
+.hero-primary-copy-block {
+  margin-left: auto;
+  max-width: 520px;
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: left;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+.editorial-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+
+.editorial-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: var(--color-cream);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.6rem;
+}
+
+.headline-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-cream);
+}
+
+.editorial-paragraph {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-cream-dim);
+  max-width: 440px;
+}
+
+/* Secondary Copy Block (Bottom-Right) */
+.hero-secondary-copy-block {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-top: 1px solid var(--border-bronze-hairline);
+  padding-top: 1.2rem;
+  max-width: 520px;
+  width: 100%;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+.secondary-meta {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--text-cream-muted);
+  letter-spacing: 0.05em;
+}
+
+.editorial-text-link {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  text-decoration: none;
+  white-space: nowrap;
+  margin-left: auto;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.editorial-text-link:hover {
+  opacity: 0.75;
+}
+
+.link-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.editorial-text-link:hover .link-arrow {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE COMPACT LAYOUTS (PDF Page 10)
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .hero-editorial-overlay {
+    padding: 5rem 1.8rem 2.5rem;
+    justify-content: flex-end;
+  }
+
+  .hero-primary-copy-block {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+
+  .hero-secondary-copy-block {
+    margin-left: 0;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .editorial-text-link {
+    margin-left: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SECTION AFTER THE HERO: EDITORIAL STORY (PDF Pages 9-10)
+   Dark background transitioning from the video's final golden haze.
+   Asymmetric layout, oversized serif headline, short paragraph, art image.
+   Zero cards. Zero buttons.
+   -------------------------------------------------------------------------- */
+.editorial-story-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-black);
+  /* Organic atmospheric golden haze transition originating from the hero's mist */
+  background-image:
+    radial-gradient(ellipse 90% 520px at 50% 0%, rgba(200, 161, 90, 0.13) 0%, rgba(122, 92, 46, 0.05) 55%, transparent 100%),
+    linear-gradient(180deg, rgba(200, 161, 90, 0.07) 0%, rgba(11, 9, 7, 0.6) 180px, var(--color-black) 440px);
+  padding: clamp(7rem, 16vh, 14rem) clamp(1.8rem, 6vw, 6rem);
+  z-index: 20;
+  overflow: hidden;
+}
+
+/* Atmospheric golden mist transition bridge at the top edge */
+.editorial-story-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  background: linear-gradient(180deg, rgba(200, 161, 90, 0.08) 0%, rgba(200, 161, 90, 0.02) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.editorial-story-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.editorial-story-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(3.5rem, 8vw, 9rem);
+  align-items: start;
+}
+
+/* Side 1: Oversized Serif Headline & Eyebrow */
+.editorial-story-primary {
+  display: flex;
+  flex-direction: column;
+}
+
+.editorial-story-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.editorial-story-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 6vw, 6.2rem);
+  font-weight: 300;
+  line-height: 1.04;
+  color: var(--color-cream);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.editorial-story-headline .headline-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold);
+}
+
+/* Side 2: Short Paragraph + Art-Directed Image */
+.editorial-story-secondary {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vh, 4rem);
+  padding-top: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.editorial-story-paragraph {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--text-cream-dim);
+  max-width: 480px;
+  margin: 0;
+}
+
+/* Art-directed image container (pure photography, zero card borders/shadows) */
+.editorial-story-figure {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.editorial-story-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1200 / 896;
+  overflow: hidden;
+  background-color: #0f0d0b;
+}
+
+.editorial-story-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-story-image-wrapper:hover .editorial-story-image {
+  transform: scale(1.025);
+}
+
+.editorial-image-caption {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--color-bronze);
+  text-transform: uppercase;
+  margin-top: 1rem;
+  display: block;
+}
+
+@media (max-width: 960px) {
+  .editorial-story-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .editorial-story-secondary {
+    padding-top: 0;
+  }
+}
